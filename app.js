@@ -3,14 +3,16 @@
 const express = require('express');
 const mysql = require('mysql');
 
-// Constants
-const PORT = 8080;
-const HOST = '0.0.0.0';
+// Constants defined 
+const { PORT, HOST } = process.env;
 
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello world\n');
+  res.send({
+    PORT,
+    HOST
+  });
 });
 
 app.listen(PORT, HOST);
