@@ -1,7 +1,7 @@
 'use strict';
 
+//const http = require('http');
 const express = require('express');
-const mysql = require('mysql');
 
 // Constants defined 
 const { PORT, HOST, DB_HOST, DB_NAME, DB_USER, DB_PASS } = process.env;
@@ -10,14 +10,14 @@ const { PORT, HOST, DB_HOST, DB_NAME, DB_USER, DB_PASS } = process.env;
 const app = express();
 app.get('/', (req, res) => {
   res.send({
-    PORT,
+    PORT, 
     HOST,
     DB_HOST,
     DB_NAME,
-    DB_USER,
+    DB_USER, 
     DB_PASS
   });
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(PORT || 80, HOST || '0.0.0.0');
+console.log(`Running on http://${HOST || 'localhost'}:${PORT || 80}`);
